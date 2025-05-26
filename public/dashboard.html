@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Hopi Hari</title>
+    <link rel="stylesheet" href="./css/dashbord.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="Logo Hopi Hari">
+                </div>
+                <div class="user-menu">
+                    <div class="user-info">
+                        <div class="user-name" id="user-name">Bem-vindo(a)</div>
+                        <div class="user-email" id="user-email"></div>
+                    </div>
+                    <button class="logout-btn" id="logout-btn">Sair</button>
+                    
+                    <form action="adm_login.html">
+                        <button class="logout-btn" >Admin</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="image-container">
+         <img class="mapa" src="mapa-hopi.jpeg" usemap="#image-map">
+
+         <map name="image-map">
+             <area target="" alt="Wild West" title="Wild West" href="area2.html" coords="979,519,1098,456,1217,261,1384,374,1640,508,1484,584,1296,619,1008,587" shape="poly">
+             <area target="" alt="Aribabiba" title="Aribabiba" href="area1.html" coords="598,179,707,311,1311,179,1221,11,627,127" shape="poly">
+             <area target="" alt="Mistieri" title="Mistieri" href="area3.html" coords="541,371,583,155,516,92,134,269,410,412" shape="poly">
+             <area target="" alt="Kaminda Mundi" title="Kaminda Mundi" href="area4.html" coords="655,317,863,596,673,664,447,408" shape="poly">
+             <area target="" alt="Infantasia" title="Infantasia" href="area5.html" coords="676,316,973,310,989,392,844,475,758,432" shape="poly">
+         </map>
+   
+
+<footer>
+    <p>&copy; 2025 - Minha Página com Imagem</p>
+</footer>
+</div>
+<script>
+    // Verificar se há um usuário logado
+    document.addEventListener('DOMContentLoaded', function() {
+        const userData = JSON.parse(localStorage.getItem('user')) || {};
+        
+        if (userData.firstName) {
+            document.getElementById('user-name').textContent = Olá, ${userData.firstName}!;
+            document.getElementById('user-email').textContent = userData.email;
+        } else {
+            // Redirecionar para a página de login se não houver usuário
+            window.location.href = '/';
+        }
+        
+        // Botão de logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('user');
+            window.location.href = '/';
+        });
+        
+        // Toggle do menu lateral (para mobile)
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um item (para mobile)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        imageMapResize();
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+</body>
+</html>
