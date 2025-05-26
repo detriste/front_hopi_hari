@@ -50,8 +50,7 @@
         const userData = JSON.parse(localStorage.getItem('user')) || {};
         
         if (userData.firstName) {
-            document.getElementById('user-name').textContent = `Olá, ${userData.firstName}!`
-            ;
+            document.getElementById('user-name').textContent = `Olá, ${userData.firstName}!`;
             document.getElementById('user-email').textContent = userData.email;
         } else {
             // Redirecionar para a página de login se não houver usuário
