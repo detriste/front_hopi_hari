@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     };
     
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('/localhost:3000/usuarios/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,11 +19,11 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         
         if (response.ok) {
             // Salvar dados do usuário no localStorage (para demonstração)
-            localStorage.setItem('user', JSON.stringify(data.user));
+            localStorage.setItem('user', JSON.stringify(data.token));
             
             // Redirecionar para a página principal (após login bem-sucedido)
             alert('Login realizado com sucesso!');
-            window.location.href = '/dashboard.html';  // Página após login
+            window.location.href = '../dashboard/dashboard.html';  // Página após login
         } else {
             alert(`Erro: ${data.message || 'Credenciais inválidas'}`);
         }
