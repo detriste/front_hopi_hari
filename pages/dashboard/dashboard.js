@@ -1,18 +1,18 @@
- // Verificar se há um usuário logado
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const userToken = JSON.parse(localStorage.getItem('token')) || {};
     const userData = JSON.parse(localStorage.getItem('user')) || {};
     
-    if (userData.firstName) {
-        document.getElementById('user-name').textContent = `Olá, ${userData.firstName}!`;
+    if (userToken.firstName) {
+        document.getgokuElementById('user-name').textContent = `Olá, ${userData.firstName}!`;
         document.getElementById('user-email').textContent = userData.email;
     } else {
         // Redirecionar para a página de login se não houver usuário
-        window.location.href = '/';
+        window.location.href = '../login/login.html';
     }
     
     // Botão de logout
     document.getElementById('logout-btn').addEventListener('click', function() {
-        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         window.location.href = '/';
     });
     
@@ -30,4 +30,10 @@
             }
         });
     });
-}); 
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    imageMapResize();
+});
+
+<script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
