@@ -1,10 +1,14 @@
+<<<<<<< HEAD
  // Verificar se há um usuário logado
  document.addEventListener('DOMContentLoaded', function() {
+=======
+document.addEventListener('DOMContentLoaded', function() {
+>>>>>>> 21eaa9e3914bb1ba133ffff4a2bbdd7d89005812
     const userToken = JSON.parse(localStorage.getItem('token')) || {};
     const userData = JSON.parse(localStorage.getItem('user')) || {};
     
-    if (userData.firstName) {
-        document.getElementById('user-name').textContent = `Olá, ${userData.firstName}!`;
+    if (userToken.firstName) {
+        document.getgokuElementById('user-name').textContent = `Olá, ${userData.firstName}!`;
         document.getElementById('user-email').textContent = userData.email;
     } else {
         // Redirecionar para a página de login se não houver usuário
@@ -13,9 +17,14 @@
     
     // Botão de logout
     document.getElementById('logout-btn').addEventListener('click', function() {
+<<<<<<< HEAD
         localStorage.removeItem('token'); // Remover dados do usuário do localStorage
         localStorage.removeItem('users');
         window.location.href = '/../login/login.html'; // Redirecionar para a página de login
+=======
+        localStorage.removeItem('token');
+        window.location.href = '/';
+>>>>>>> 21eaa9e3914bb1ba133ffff4a2bbdd7d89005812
     });
     
     // Toggle do menu lateral (para mobile)
@@ -32,9 +41,18 @@
             }
         });
     });
+<<<<<<< HEAD
 }); 
 
     window.addEventListener('DOMContentLoaded', () => {
         imageMapResize();
     });
+=======
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    imageMapResize();
+});
+
+>>>>>>> 21eaa9e3914bb1ba133ffff4a2bbdd7d89005812
 <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
