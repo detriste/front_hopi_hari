@@ -86,7 +86,13 @@
                 return;
             }
     
-            // ✅ Correção aqui
+            // ✅ Salvar dados no localStorage
+            localStorage.setItem('user_name', name);
+            localStorage.setItem('user_email', email);
+            if (previewImage.src) {
+                localStorage.setItem('user_image', previewImage.src);
+            }
+    
             alert(`Perfil atualizado com sucesso!\nNome: ${name}\nEmail: ${email}`);
     
             // Limpar campos de senha após salvar
@@ -94,6 +100,7 @@
             form['confirm-password'].value = '';
         });
     </script>
+    
     
 <script>
     const inputFile = document.getElementById('profile-picture');
@@ -122,8 +129,8 @@
     }
 }
 
-// Exemplo de uso:
-setBannerImage('https://cdn-0001.qstv.on.epicgames.com/XgWTSXKgDdwlRyMmWZ/image/landscape_comp.jpeg');
+
+
 </script>
 
 </body>

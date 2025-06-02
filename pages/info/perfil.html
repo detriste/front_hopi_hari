@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="info.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <img src="https://cdn.freebiesupply.com/logos/large/2x/hopi-hari-logo-black-and-white.png" alt="Logo" />
+      </div>
+      <div class="user-menu">
+        <div class="user-info">
+          <div id="user-name" class="user-name"></div>
+          <div id="user-email" class="user-email"></div>
+        </div>
+        <button class="logout-btn" onclick="alert('Logout efetuado!')">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h1 class="page-title">Perfil do Usuário</h1>
+    <div class="highlight-box">
+      <div class="form-group profile-picture-group">
+        <label>Foto de Perfil:</label>
+        <div class="profile-picture-wrapper">
+          <img id="profile-picture" src="https://via.placeholder.com/100" alt="Foto de Perfil" />
+        </div>
+      </div>
+      <p><strong>Nome:</strong> <span id="profile-name"></span></p>
+      <p><strong>Email:</strong> <span id="profile-email"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Carregar dados do localStorage
+    const name = localStorage.getItem('user_name') || 'Não informado';
+    const email = localStorage.getItem('user_email') || 'Não informado';
+    const profileImage = localStorage.getItem('user_image');
+
+    document.getElementById('profile-name').innerText = name;
+    document.getElementById('profile-email').innerText = email;
+    document.getElementById('user-name').innerText = name;
+    document.getElementById('user-email').innerText = email;
+
+    if (profileImage) {
+      document.getElementById('profile-picture').src = profileImage;
+    }
+  </script>
+</body>
+</html>
