@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Botão de logout
     document.getElementById('logout-btn').addEventListener('click', function() {
-<<<<<<< HEAD
+
         localStorage.removeItem('token'); // Remover dados do usuário do localStorage
         localStorage.removeItem('users');
         window.location.href = '/../login/login.html'; // Redirecionar para a página de login
-=======
+
         localStorage.removeItem('token');
         window.location.href = '/';
 >>>>>>> 21eaa9e3914bb1ba133ffff4a2bbdd7d89005812

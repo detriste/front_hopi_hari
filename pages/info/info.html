@@ -1,31 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Atualizar Usuário</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Configuração de Perfil</title>
+<link rel="stylesheet" href="info.css">
+
+
 </head>
 <body>
-  <h1>Atualizar Usuário</h1>
+    <div class="banner-container" id="banner-container" style="display:none;">
+        <img id="banner-image" src="" alt="Banner Opcional" />
+    </div>
+    <div class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/hopi-hari-logo-black-and-white.png" alt="Logo" />
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-name">joca gado</div>
+                    <div class="user-email">joca.gado@gmail.com</div>
+                </div>
+                <button class="logout-btn" onclick="alert('Logout efetuado!')">Sair</button>
+            </div>
+        </div>
+    </div>
 
-  <form id="updateForm">
-    <label for="id">ID do usuário:</label><br />
-    <input type="number" id="id" name="id" required /><br /><br />
+    <div class="sidebar">
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#" class="nav-link active">Configurações</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Perfil</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Notificações</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Segurança</a></li>
+        </ul>
+    </div>
 
-    <label for="first_name">Primeiro Nome:</label><br />
-    <input type="text" id="first_name" name="first_name" required /><br /><br />
+    <div class="main-content">
+        <h1 class="page-title">Configuração de Perfil</h1>
+        <div class="highlight-box">
+            <h2 class="highlight-title">Alterar Informações</h2>
+            <form id="profile-form">
 
-    <label for="last_name">Sobrenome:</label><br />
-    <input type="text" id="last_name" name="last_name" required /><br /><br />
+                <div class="form-group profile-picture-group">
+                    <label for="profile-picture">Foto de Perfil:</label>
+                    <div class="profile-picture-wrapper">
+                        <img id="preview-image" src="https://via.placeholder.com/100" alt="Foto de Perfil" />
+                        <input type="file" id="profile-picture" name="profile-picture" accept="image/*" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" placeholder="Nome" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Nova Senha:</label>
+                    <input type="password" id="password" name="password" placeholder="Digite a nova senha" />
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirmar Senha:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme a nova senha" />
+                </div>
+                <button type="submit" class="card-button">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
 
-    <label for="email">Email:</label><br />
-    <input type="email" id="email" name="email" required /><br /><br />
+    <script>
+        const form = document.getElementById('profile-form');
+    
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const password = form.password.value;
+            const confirmPassword = form['confirm-password'].value;
+    
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem.');
+                return;
+            }
+    
+            // ✅ Correção aqui
+            alert(`Perfil atualizado com sucesso!\nNome: ${name}\nEmail: ${email}`);
+    
+            // Limpar campos de senha após salvar
+            form.password.value = '';
+            form['confirm-password'].value = '';
+        });
+    </script>
+    
+<script>
+    const inputFile = document.getElementById('profile-picture');
+    const previewImage = document.getElementById('preview-image');
 
-    <button type="submit">Atualizar</button>
-  </form>
+    inputFile.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
-  <p id="resposta"></p>
+    function setBannerImage(url) {
+    const bannerContainer = document.getElementById('banner-container');
+    const bannerImage = document.getElementById('banner-image');
 
-  <script src="info.js"></script>
+    if (url && url.trim() !== '') {
+        bannerImage.src = url;
+        bannerContainer.style.display = 'block';
+    } else {
+        bannerContainer.style.display = 'none';
+    }
+}
+
+// Exemplo de uso:
+setBannerImage('https://cdn-0001.qstv.on.epicgames.com/XgWTSXKgDdwlRyMmWZ/image/landscape_comp.jpeg');
+</script>
+
 </body>
 </html>
