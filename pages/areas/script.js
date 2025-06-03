@@ -16,7 +16,19 @@ document.addEventListener('DOMContentLoaded', async function() {
     const data = await response.json();
     console.log(data);
 
+
+    const data = await response.json();
+    console.log(data);
+    
+    for(var brinquedos of data){
+        console.log(brinquedos);
+    }
+
+
 });
+
+
+
 const grid = document.querySelector('.grid');
 grid.innerHTML = grid.innerHTML + 
 
